@@ -59,22 +59,22 @@
     <Compile Include="Formularios\FirstCustomControl.designer.cs">
       <DependentUpon>FirstCustomControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Formularios\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Formularios\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAlerta.cs">
+    <Compile Include="Formularios\frmAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAlerta.designer.cs">
+    <Compile Include="Formularios\frmAlerta.designer.cs">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Formularios\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Formularios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -112,13 +112,13 @@
     <EmbeddedResource Include="Formularios\FirstCustomControl.resx">
       <DependentUpon>FirstCustomControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Formularios\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAlerta.resx">
+    <EmbeddedResource Include="Formularios\frmAlerta.resx">
       <DependentUpon>frmAlerta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Formularios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
