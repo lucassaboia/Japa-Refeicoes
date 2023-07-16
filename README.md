@@ -1,6 +1,8 @@
 # Japa Refeições - Sistema de Cadastro para Restaurante
 
-Bem-vindo ao projeto Japa Refeições! Este repositório contém um sistema de cadastro desenvolvido para um restaurante, como parte de um projeto avaliativo do Técnico de Informática em 2020.2 no Colégio Mercúrio.
+Bem-vindo ao projeto Japa Refeições! Este repositório contém um sistema de cadastro desenvolvido para um restaurante, como parte de um projeto avaliativo do Técnico de Programação no Colégio Mercúrio.
+
+![Home](https://i.imgur.com/in2N8fc.png)
 
 ## Apresentação do Projeto
 O Japa Refeições é um sistema de cadastro que visa facilitar a gestão de informações importantes para o funcionamento de um restaurante. Ele permite o cadastro de produtos, funcionários, clientes e pedidos, oferecendo uma solução simples e eficiente para auxiliar na administração do estabelecimento.
