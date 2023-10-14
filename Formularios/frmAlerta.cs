@@ -18,14 +18,12 @@ namespace ProjetoCSGrupo
         {
             InitializeComponent();
         }
-
         public enum enmAction
         {
             wait,
             start,
             close
         }
-
         public enum enmType
         {
             Success,
@@ -36,17 +34,10 @@ namespace ProjetoCSGrupo
             Virgula
         }
         private frmAlerta.enmAction action;
-
         private int x, y;
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            switch(this.action)
+            switch (this.action)
             {
                 case enmAction.wait:
                     timer1.Interval = 3000;
@@ -79,24 +70,16 @@ namespace ProjetoCSGrupo
                     break;
             }
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             timer1.Interval = 1;
             action = enmAction.close;
         }
-
         private void picCancel_Click(object sender, EventArgs e)
         {
             timer1.Interval = 1;
             action = enmAction.close;
         }
-
-        private void frmAlerta_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void showAlert(string msg, enmType type)
         {
             this.Opacity = 0.0;
@@ -117,11 +100,10 @@ namespace ProjetoCSGrupo
                     break;
 
                 }
-
             }
             this.x = Screen.PrimaryScreen.WorkingArea.Width - base.Width - 5;
 
-            switch(type)
+            switch (type)
             {
                 case enmType.Success:
                     this.picSimbolo.Image = Resources.success;
@@ -148,14 +130,16 @@ namespace ProjetoCSGrupo
                     this.BackColor = Color.DarkCyan;
                     break;
             }
-
-
             this.lblMsg.Text = msg;
-
             this.Show();
             this.action = enmAction.start;
             this.timer1.Interval = 1;
             this.timer1.Start();
+        }
+        public static void Alerta(string msg, frmAlerta.enmType type)
+        {
+            frmAlerta frm = new frmAlerta();
+            frm.showAlert(msg, type);
         }
     }
 }

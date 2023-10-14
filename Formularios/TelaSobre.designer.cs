@@ -262,7 +262,6 @@
             this.Controls.Add(this.label1);
             this.Name = "TelaSobre";
             this.Size = new System.Drawing.Size(791, 481);
-            this.Load += new System.EventHandler(this.TelaSobre_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

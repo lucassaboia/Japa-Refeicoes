@@ -18,14 +18,11 @@ namespace ProjetoCSGrupo
             InitializeComponent();
 
         }
-
         public void Alerta(string msg, frmAlerta.enmType type)
         {
             frmAlerta frm = new frmAlerta();
             frm.showAlert(msg, type);
-
         }
-
         private void CarregarVendas()
         {
             string sqlCarregarVendas = $"select tbp.idpedido as 'ID', tbp.cliente as 'Cliente', tbp.valortotal as 'Valor Total',tbp.status as 'Status',tbp.data as 'Data'  FROM tbpedidosjp as tbp";
@@ -48,9 +45,7 @@ namespace ProjetoCSGrupo
             dgvItensVenda.Columns[3].Width = 100;
             dgvItensVenda.Columns[4].Width = 164;
             dgvItensVenda.Columns["Valor Total"].DefaultCellStyle.Format = "C";
-
         }
-
         private void TelaVendas_Load(object sender, EventArgs e)
         {
             btnAdicionar.Visible = false;
@@ -61,7 +56,6 @@ namespace ProjetoCSGrupo
             txtNomeProduto.ValueMember = "codigo";
             txtNomeProduto.ResetText();
         }
-
         private void dgvVendas_SelectionChanged(object sender, EventArgs e)
         {
             int contlinhas = dgvVendas.SelectedRows.Count;
@@ -102,7 +96,6 @@ namespace ProjetoCSGrupo
 
             }
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             txtNomeProduto.Enabled = true;
@@ -116,9 +109,7 @@ namespace ProjetoCSGrupo
             btnSalvar.Location = new Point(15, 420);
             btnApagar.Location = new Point(108, 420);
             dgvVendas.Enabled = false;
-
         }
-
         private void txtNomeProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (txtNomeProduto.SelectedValue.ToString() != "System.Data.DataRowView")
@@ -135,10 +126,7 @@ namespace ProjetoCSGrupo
                 txtQuantidadeProduto.Enabled = true;
                 txtQuantidadeProduto.ResetText();
             }
-
-            
         }
-
         private void btnApagar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja apagar o registro de venda ?", "Registro de Venda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -157,12 +145,10 @@ namespace ProjetoCSGrupo
                 btnRemover.Visible = false;
                 dgvVendas.Enabled = true;
                 txtNomeCliente.Enabled = false;
-                txtQuantidadeProduto.Text = "";                
+                txtQuantidadeProduto.Text = "";
                 CarregarVendas();
-
             }
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (dgvItensVenda.RowCount == 0)
@@ -171,7 +157,6 @@ namespace ProjetoCSGrupo
             }
             else if (MessageBox.Show("Deseja atualizar o registro de venda ?", "Registro de Venda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-
                 string id_venda = txtID_Venda.Text;
                 string status = txtStatusVenda.Text;
                 string total_venda = totalvenda.ToString();
@@ -191,11 +176,8 @@ namespace ProjetoCSGrupo
                 dgvVendas.Enabled = true;
 
                 CarregarVendas();
-
             }
-            
         }
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if ((txtNomeProduto.Text != "") || (txtQuantidadeProduto.Text != "") || (txtNomeCliente.Text != "") || (txtDataVenda.Text != ""))
@@ -214,28 +196,18 @@ namespace ProjetoCSGrupo
 
                 CarregarItensVenda();
 
-
-
                 txtQuantidadeProduto.Enabled = false;
                 txtValorProduto.Text = "R$ 0,00";
                 txtQuantidadeProduto.ResetText();
                 txtTotalProduto.Text = "R$ 0,00";
                 txtNomeProduto.ResetText();
-
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnAtualizarVendas_Click(object sender, EventArgs e)
         {
             CarregarVendas();
             this.Alerta("Vendas atualizadas com sucesso.", frmAlerta.enmType.Success);
         }
-
         private void btnAtualizarProdutos_Click(object sender, EventArgs e)
         {
             string sqlProduto = $"select * from tbprodutosjp";
@@ -244,15 +216,14 @@ namespace ProjetoCSGrupo
             txtQuantidadeProduto.Enabled = false;
             this.Alerta("Produtos atualizados com sucesso.", frmAlerta.enmType.Success);
         }
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
             try
             {
-                string id_itemvenda = dgvItensVenda.SelectedRows[0].Cells["iditempedido"].Value.ToString();                        
-                string ValorSelecionado = dgvItensVenda.SelectedRows[0].Cells["Valor Total"].Value.ToString().Replace("R$ ", ""); 
-                string sqlApagarProduto = $"DELETE FROM `tbitenspedido` WHERE iditempedido = '{id_itemvenda}'";  
-                Banco.dml(sqlApagarProduto);   
+                string id_itemvenda = dgvItensVenda.SelectedRows[0].Cells["iditempedido"].Value.ToString();
+                string ValorSelecionado = dgvItensVenda.SelectedRows[0].Cells["Valor Total"].Value.ToString().Replace("R$ ", "");
+                string sqlApagarProduto = $"DELETE FROM `tbitenspedido` WHERE iditempedido = '{id_itemvenda}'";
+                Banco.dml(sqlApagarProduto);
                 double TotalProduto = Convert.ToDouble(ValorSelecionado);
                 totalvenda = totalvenda - TotalProduto;
                 lblTotalVenda.Text = totalvenda.ToString("C");
@@ -267,7 +238,6 @@ namespace ProjetoCSGrupo
                 this.Alerta("Não há nada para apagar.", frmAlerta.enmType.Error);
             }
         }
-
         private void txtQuantidadeProduto_TextChanged(object sender, EventArgs e)
         {
             if (txtQuantidadeProduto.Text == "")

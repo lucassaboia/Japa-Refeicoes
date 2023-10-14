@@ -16,10 +16,5 @@ namespace ProjetoCSGrupo
         {
             InitializeComponent();
         }
-
-        private void TelaSobre_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

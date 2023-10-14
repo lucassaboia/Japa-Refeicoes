@@ -19,7 +19,6 @@ namespace ProjetoCSGrupo
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             panelLateral.Height = btnHome.Height;
@@ -36,7 +35,7 @@ namespace ProjetoCSGrupo
                 btnEstoque.Visible = false;
                 btnPedidos.Visible = true;
                 btnVenda.Visible = true;
-                
+
 
             }
             else if (nivel == 2)
@@ -57,7 +56,6 @@ namespace ProjetoCSGrupo
                 btnPedidos.Visible = true;
                 btnVenda.Visible = true;
             }
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -69,7 +67,6 @@ namespace ProjetoCSGrupo
                 Application.Exit();
             }
         }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente deslogar?",
@@ -82,7 +79,6 @@ namespace ProjetoCSGrupo
                 Dispose();
             }
         }
-
         private void btnFechar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?",
@@ -93,7 +89,6 @@ namespace ProjetoCSGrupo
                 Application.Exit();
             }
         }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -104,7 +99,6 @@ namespace ProjetoCSGrupo
             movX = e.X;
             movY = e.Y;
         }
-
         private void panel2_MouseMove(object sender, MouseEventArgs e)
         {
             if (mov == 1)
@@ -112,7 +106,6 @@ namespace ProjetoCSGrupo
                 this.SetDesktopLocation(MousePosition.X - movX, MousePosition.Y - movY);
             }
         }
-
         private void panel2_MouseUp(object sender, MouseEventArgs e)
         {
             mov = 0;
@@ -128,7 +121,6 @@ namespace ProjetoCSGrupo
             telaVendas1.Visible = false;
             firstCustomControl1.Visible = false;
         }
-
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             panelLateral.Height = btnEstoque.Height;
@@ -140,7 +132,6 @@ namespace ProjetoCSGrupo
             telaVendas1.Visible = false;
             firstCustomControl1.Visible = false;
         }
-
         private void btnFuncionarios_Click(object sender, EventArgs e)
         {
             panelLateral.Height = btnFuncionarios.Height;
@@ -151,8 +142,7 @@ namespace ProjetoCSGrupo
             telaSobre1.Visible = false;
             telaVendas1.Visible = false;
             firstCustomControl1.Visible = false;
-
-        } 
+        }
         private void btnVenda_Click(object sender, EventArgs e)
         {
             panelLateral.Height = btnVenda.Height;
@@ -160,7 +150,6 @@ namespace ProjetoCSGrupo
             telaVendas1.Visible = true;
             firstCustomControl1.Visible = false;
         }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             panelLateral.Height = btnHome.Height;
@@ -171,7 +160,6 @@ namespace ProjetoCSGrupo
             telaEstoque1.Visible = false;
             telaFuncionarios1.Visible = false;
         }
-
         private void btnSobre_Click(object sender, EventArgs e)
         {
             panelLateral.Height = btnSobre.Height;
@@ -182,21 +170,6 @@ namespace ProjetoCSGrupo
             telaSobre1.Visible = true;
             telaVendas1.Visible = false;
             firstCustomControl1.Visible = false;
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void telaPedidos1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

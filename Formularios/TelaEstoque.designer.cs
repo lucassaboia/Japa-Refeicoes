@@ -247,7 +247,6 @@
             this.txtCategoria.Size = new System.Drawing.Size(161, 21);
             this.txtCategoria.TabIndex = 16;
             this.txtCategoria.SelectedIndexChanged += new System.EventHandler(this.txtCategoria_SelectedIndexChanged);
-            this.txtCategoria.Leave += new System.EventHandler(this.txtCategoria_Leave);
             // 
             // txtSubcategoria
             // 
@@ -314,9 +313,7 @@
             this.txtCusto.Name = "txtCusto";
             this.txtCusto.Size = new System.Drawing.Size(100, 20);
             this.txtCusto.TabIndex = 23;
-            this.txtCusto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCusto_KeyDown);
             this.txtCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusto_KeyPress);
-            this.txtCusto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtCusto_MouseDown);
             // 
             // txtVenda
             // 
@@ -325,9 +322,7 @@
             this.txtVenda.Name = "txtVenda";
             this.txtVenda.Size = new System.Drawing.Size(100, 20);
             this.txtVenda.TabIndex = 24;
-            this.txtVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVenda_KeyDown);
             this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
-            this.txtVenda.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtVenda_MouseDown);
             // 
             // txtLucro
             // 
@@ -478,7 +473,6 @@
             this.dgvEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEstoque.Size = new System.Drawing.Size(240, 387);
             this.dgvEstoque.TabIndex = 34;
-            this.dgvEstoque.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstoque_CellContentClick);
             this.dgvEstoque.SelectionChanged += new System.EventHandler(this.dgvEstoque_SelectionChanged_1);
             // 
             // TelaEstoque

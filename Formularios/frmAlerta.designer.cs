@@ -87,7 +87,6 @@
             this.Name = "frmAlerta";
             this.ShowInTaskbar = false;
             this.Text = "Notificação";
-            this.Load += new System.EventHandler(this.frmAlerta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picSimbolo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCancel)).EndInit();
             this.ResumeLayout(false);

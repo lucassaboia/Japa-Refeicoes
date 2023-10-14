@@ -86,7 +86,6 @@
             this.txtgenero.Name = "txtgenero";
             this.txtgenero.Size = new System.Drawing.Size(121, 21);
             this.txtgenero.TabIndex = 83;
-            this.txtgenero.SelectedIndexChanged += new System.EventHandler(this.txtgenero_SelectedIndexChanged);
             this.txtgenero.Leave += new System.EventHandler(this.txtgenero_Leave);
             // 
             // txttelefone
@@ -118,7 +117,6 @@
             this.txtendereco.Name = "txtendereco";
             this.txtendereco.Size = new System.Drawing.Size(286, 81);
             this.txtendereco.TabIndex = 76;
-            this.txtendereco.TextChanged += new System.EventHandler(this.txtendereco_TextChanged);
             // 
             // txtemail
             // 
@@ -428,7 +426,6 @@
             this.txtsalariobase.Name = "txtsalariobase";
             this.txtsalariobase.Size = new System.Drawing.Size(83, 20);
             this.txtsalariobase.TabIndex = 107;
-            this.txtsalariobase.Enter += new System.EventHandler(this.txtsalariobase_Enter);
             this.txtsalariobase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.txtsalariobase.Leave += new System.EventHandler(this.txtsalariobase_Leave);
             // 

@@ -17,11 +17,6 @@ namespace ProjetoCSGrupo
         {
             InitializeComponent();
         }
-        public void Alerta(string msg, frmAlerta.enmType type)
-        {
-            frmAlerta frm = new frmAlerta();
-            frm.showAlert(msg, type);
-        }
         private void btnNovo_Click(object sender, EventArgs e)
         {
             txtCodigo.ResetText();
@@ -41,8 +36,7 @@ namespace ProjetoCSGrupo
             btnApagar.Visible = false;
             txtPesquisar.Enabled = true;
             pbPesquisar.Enabled = true;
-            btnCadastrar.Location = new Point(118, 410);    
-
+            btnCadastrar.Location = new Point(118, 410);
             txtDescricao.ResetText();
             txtCategoria.ResetText();
             txtSubcategoria.ResetText();
@@ -51,27 +45,24 @@ namespace ProjetoCSGrupo
             txtMarca.ResetText();
             txtCusto.ResetText();
             txtVenda.ResetText();
-
         }
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             if ((string.IsNullOrEmpty(txtDescricao.Text.Trim())) || (string.IsNullOrEmpty(txtMarca.Text.Trim())) || (string.IsNullOrEmpty(txtCusto.Text.Trim())) || (string.IsNullOrEmpty(txtTipo.Text.Trim())) || (string.IsNullOrEmpty(txtCategoria.Text.Trim())) || (string.IsNullOrEmpty(txtSubcategoria.Text.Trim())) || (string.IsNullOrEmpty(txtEstoque.Text.Trim())) || (string.IsNullOrEmpty(txtVenda.Text.Trim())))
             {
-                this.Alerta("Preencha todos os campos.", frmAlerta.enmType.Campos);
+                frmAlerta.Alerta("Preencha todos os campos.", frmAlerta.enmType.Campos);
             }
-
             else
             {
                 System.Text.RegularExpressions.Regex num = new System.Text.RegularExpressions.Regex("[^0-9-,]");
                 System.Text.RegularExpressions.Regex num2 = new System.Text.RegularExpressions.Regex("[^0-9]");
                 if ((num.IsMatch(txtVenda.Text)) || (num.IsMatch(txtCusto.Text)))
                 {
-                    this.Alerta("Preços só podem ser números", frmAlerta.enmType.Virgula);
+                    frmAlerta.Alerta("Preços só podem ser números", frmAlerta.enmType.Virgula);
                 }
                 else if (num2.IsMatch(txtEstoque.Text))
                 {
-                    this.Alerta("Campo estoque só pode ser número", frmAlerta.enmType.Virgula);
+                    frmAlerta.Alerta("Campo estoque só pode ser número", frmAlerta.enmType.Virgula);
                 }
                 else
                 {
@@ -82,12 +73,10 @@ namespace ProjetoCSGrupo
                     lucro = precovenda - precocusto;
                     txtLucro.Text = lucro.ToString("C");
 
-
                     if (lucro < 0)
                     {
-                        this.Alerta("O lucro não pode ser negativo.", frmAlerta.enmType.Error);
+                        frmAlerta.Alerta("O lucro não pode ser negativo.", frmAlerta.enmType.Error);
                     }
-
                     else if (MessageBox.Show("Deseja realmente salvar o produto?", "Japapito Refeições", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
@@ -105,7 +94,7 @@ namespace ProjetoCSGrupo
                             cmd.Parameters.AddWithValue("@venda", txtVenda.Text);
                             cmd.Parameters.AddWithValue("@lucro", txtLucro.Text);
                             cmd.ExecuteNonQuery();
-                            this.Alerta("Produto cadastrado.", frmAlerta.enmType.Success);
+                            frmAlerta.Alerta("Produto cadastrado.", frmAlerta.enmType.Success);
 
                             txtDescricao.Enabled = false;
                             txtCategoria.Enabled = false;
@@ -139,7 +128,7 @@ namespace ProjetoCSGrupo
                         }
                         catch
                         {
-                            this.Alerta("Falha ao cadastrar.", frmAlerta.enmType.Error);
+                            frmAlerta.Alerta("Falha ao cadastrar.", frmAlerta.enmType.Error);
                         }
                         finally
                         {
@@ -149,7 +138,6 @@ namespace ProjetoCSGrupo
                 }
             }
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             txtPesquisar.Enabled = false;
@@ -158,39 +146,33 @@ namespace ProjetoCSGrupo
             txtDescricao.Enabled = true;
             txtCategoria.Enabled = true;
             btnApagar.Location = new Point(210, 410);
-
             txtTipo.Enabled = true;
             txtEstoque.Enabled = true;
             txtMarca.Enabled = true;
             txtCusto.Enabled = true;
             txtVenda.Enabled = true;
             txtSubcategoria.Enabled = true;
-
             btnSalvar.Visible = true;
             btnEditar.Visible = false;
             btnApagar.Visible = true;
-           
-            
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if ((string.IsNullOrEmpty(txtDescricao.Text.Trim())) || (string.IsNullOrEmpty(txtMarca.Text.Trim())) || (string.IsNullOrEmpty(txtCusto.Text.Trim())) || (string.IsNullOrEmpty(txtTipo.Text.Trim())) || (string.IsNullOrEmpty(txtCategoria.Text.Trim())) || (string.IsNullOrEmpty(txtSubcategoria.Text.Trim())) || (string.IsNullOrEmpty(txtEstoque.Text.Trim())) || (string.IsNullOrEmpty(txtVenda.Text.Trim())))
             {
-                this.Alerta("Preencha todos os campos.", frmAlerta.enmType.Campos);
+                frmAlerta.Alerta("Preencha todos os campos.", frmAlerta.enmType.Campos);
             }
-
             else
             {
                 System.Text.RegularExpressions.Regex num = new System.Text.RegularExpressions.Regex("[^0-9-,]");
                 System.Text.RegularExpressions.Regex num2 = new System.Text.RegularExpressions.Regex("[^0-9]");
                 if ((num.IsMatch(txtVenda.Text)) || (num.IsMatch(txtCusto.Text)))
                 {
-                    this.Alerta("Preços só podem ser números", frmAlerta.enmType.Virgula);
+                    frmAlerta.Alerta("Preços só podem ser números", frmAlerta.enmType.Virgula);
                 }
                 else if (num2.IsMatch(txtEstoque.Text))
                 {
-                    this.Alerta("Campo estoque só pode ser número", frmAlerta.enmType.Virgula);
+                    frmAlerta.Alerta("Campo estoque só pode ser número", frmAlerta.enmType.Virgula);
                 }
                 else
                 {
@@ -200,22 +182,17 @@ namespace ProjetoCSGrupo
                     precovenda = Convert.ToDouble(txtVenda.Text);
                     lucro = precovenda - precocusto;
                     txtLucro.Text = lucro.ToString("C");
-
-
                     if (lucro < 0)
                     {
-                        this.Alerta("O lucro não pode ser negativo.", frmAlerta.enmType.Error);
+                        frmAlerta.Alerta("O lucro não pode ser negativo.", frmAlerta.enmType.Error);
                     }
-
                     else if (MessageBox.Show("Deseja realmente salvar o produto?", "Japapito Refeições", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
                         try
                         {
-
                             conexao.Open();
                             MySqlCommand cmd = new MySqlCommand("update tbprodutosjp set descricao=@descricao, marca=@marca, tipo=@tipo, categoria=@categoria,subcategoria=@subcategoria, estoque=@estoque, custo=@custo, lucro=@lucro, venda=@venda where codigo=@codigo", conexao);
-
                             cmd.Parameters.AddWithValue("@codigo", txtCodigo.Text);
                             cmd.Parameters.AddWithValue("@descricao", txtDescricao.Text);
                             cmd.Parameters.AddWithValue("@marca", txtMarca.Text);
@@ -228,7 +205,7 @@ namespace ProjetoCSGrupo
                             cmd.Parameters.AddWithValue("@lucro", txtLucro.Text);
 
                             cmd.ExecuteNonQuery();
-                            this.Alerta("Alteração salva.", frmAlerta.enmType.Success);
+                            frmAlerta.Alerta("Alteração salva.", frmAlerta.enmType.Success);
 
                             txtDescricao.Enabled = false;
                             txtCategoria.Enabled = false;
@@ -252,7 +229,7 @@ namespace ProjetoCSGrupo
                         }
                         catch
                         {
-                            this.Alerta("Não foi possível salvar", frmAlerta.enmType.Error);
+                            frmAlerta.Alerta("Não foi possível salvar", frmAlerta.enmType.Error);
                         }
                         finally
                         {
@@ -262,7 +239,6 @@ namespace ProjetoCSGrupo
                 }
             }
         }
-
         private void btnApagar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente apagar o produto?", "Japapito Refeições", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -274,8 +250,7 @@ namespace ProjetoCSGrupo
                     MySqlCommand cmd = new MySqlCommand("delete from tbprodutosjp where codigo=@codigo", conexao);
                     cmd.Parameters.AddWithValue("@codigo", txtCodigo.Text);
                     cmd.ExecuteNonQuery();
-                    this.Alerta("Produto apagado com sucesso.", frmAlerta.enmType.Success);
-
+                    frmAlerta.Alerta("Produto apagado com sucesso.", frmAlerta.enmType.Success);
                     txtDescricao.Enabled = false;
                     txtCategoria.Enabled = false;
                     txtSubcategoria.Enabled = false;
@@ -284,7 +259,6 @@ namespace ProjetoCSGrupo
                     txtMarca.Enabled = false;
                     txtCusto.Enabled = false;
                     txtVenda.Enabled = false;
-
                     txtDescricao.ResetText();
                     txtCategoria.ResetText();
                     txtSubcategoria.ResetText();
@@ -294,22 +268,18 @@ namespace ProjetoCSGrupo
                     txtCusto.ResetText();
                     txtVenda.ResetText();
                     txtLucro.ResetText();
-
-
                     btnApagar.Visible = false;
                     btnSalvar.Visible = false;
                     btnCadastrar.Visible = false;
                     btnEditar.Visible = false;
-
                     txtPesquisar.Enabled = true;
                     txtPesquisar.ResetText();
                     pbPesquisar.Enabled = true;
                     timer1.Start();
-
                 }
                 catch
                 {
-                    this.Alerta("Não foi possível apagar.", frmAlerta.enmType.Error);
+                    frmAlerta.Alerta("Não foi possível apagar.", frmAlerta.enmType.Error);
                 }
                 finally
                 {
@@ -317,7 +287,6 @@ namespace ProjetoCSGrupo
                 }
             }
         }
-
         private void TelaEstoque_Load(object sender, EventArgs e)
         {
             MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
@@ -334,22 +303,17 @@ namespace ProjetoCSGrupo
                     dgvEstoque.Columns[0].Width = 50;
                     dgvEstoque.Columns[1].Width = 140;
                     dgvEstoque.Columns[2].Width = 50;
-
                 }
-
-
             }
             catch
             {
-                this.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
+                frmAlerta.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
             }
             finally
             {
                 conexao.Close();
             }
-
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
@@ -366,14 +330,11 @@ namespace ProjetoCSGrupo
                     dgvEstoque.Columns[0].Width = 50;
                     dgvEstoque.Columns[1].Width = 140;
                     dgvEstoque.Columns[2].Width = 50;
-
                 }
-
-
             }
             catch
             {
-                this.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
+                frmAlerta.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
             }
             finally
             {
@@ -388,7 +349,6 @@ namespace ProjetoCSGrupo
             if (contlinhas > 0)
             {
                 MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
-
                 try
                 {
                     conexao.Open();
@@ -396,17 +356,17 @@ namespace ProjetoCSGrupo
                     cmd.Parameters.AddWithValue("@codigo", txtPesquisar.Text.ToString());
                     MySqlDataReader reader = cmd.ExecuteReader();
                     reader.Read();
-                        txtCodigo.Text = reader["codigo"].ToString();
-                        txtDescricao.Text = reader["descricao"].ToString();
-                        txtMarca.Text = reader["marca"].ToString();
-                        txtCategoria.Text = reader["categoria"].ToString();
-                        txtSubcategoria.Text = reader["subcategoria"].ToString();
-                        txtEstoque.Text = reader["estoque"].ToString();
-                        txtTipo.Text = reader["tipo"].ToString();
-                        txtCusto.Text = reader["custo"].ToString();
-                        txtVenda.Text = reader["venda"].ToString();
-                        txtLucro.Text = reader["lucro"].ToString();
-                    this.Alerta("Cadastro encontrado com sucesso.", frmAlerta.enmType.Success);
+                    txtCodigo.Text = reader["codigo"].ToString();
+                    txtDescricao.Text = reader["descricao"].ToString();
+                    txtMarca.Text = reader["marca"].ToString();
+                    txtCategoria.Text = reader["categoria"].ToString();
+                    txtSubcategoria.Text = reader["subcategoria"].ToString();
+                    txtEstoque.Text = reader["estoque"].ToString();
+                    txtTipo.Text = reader["tipo"].ToString();
+                    txtCusto.Text = reader["custo"].ToString();
+                    txtVenda.Text = reader["venda"].ToString();
+                    txtLucro.Text = reader["lucro"].ToString();
+                    frmAlerta.Alerta("Cadastro encontrado com sucesso.", frmAlerta.enmType.Success);
                     btnSalvar.Visible = false;
                     btnEditar.Visible = true;
                     btnCadastrar.Visible = false;
@@ -420,16 +380,10 @@ namespace ProjetoCSGrupo
                     txtSubcategoria.Enabled = false;
                     txtTipo.Enabled = false;
                     txtVenda.Enabled = false;
-                    
-                 
-
-
-
                 }
                 catch
                 {
-                    this.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
-
+                    frmAlerta.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
                 }
                 finally
                 {
@@ -437,58 +391,11 @@ namespace ProjetoCSGrupo
                 }
             }
         }
-
-        private void dgvEstoque_SelectionChanged(object sender, EventArgs e)
-        {
-            /*
-             O CODIGO DO DGV NÃO É ESSE, É O OUTRO QUE TA LÁ NO FINAL.
-            int contlinhas = dgvEstoque.SelectedRows.Count;
-            if (contlinhas > 0)
-            {
-                MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
-
-                try
-                {
-                    conexao.Open();
-                    MySqlCommand cmd = new MySqlCommand("select * from tbprodutosjp where codigo = @codigo", conexao);
-                    cmd.Parameters.AddWithValue("@codigo", dgvEstoque.SelectedRows[0].Cells[0].Value.ToString());
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-
-                    txtCodigo.Text = reader["codigo"].ToString();
-                    txtDescricao.Text = reader["descricao"].ToString();
-                    txtMarca.Text = reader["marca"].ToString();
-                    txtCategoria.Text = reader["categoria"].ToString();
-                    txtSubcategoria.Text = reader["subcategoria"].ToString();
-                    txtEstoque.Text = reader["estoque"].ToString();
-                    txtTipo.Text = reader["tipo"].ToString();
-                    txtCusto.Text = reader["custo"].ToString();
-                    txtVenda.Text = reader["venda"].ToString();
-                    txtLucro.Text = reader["lucro"].ToString();
-
-                    btnEditar.Enabled = true;
-
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Não foi possível exibir os dados dos produtos" + erro, "Erro ao exibir dados dos produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-                finally
-                {
-                    conexao.Close();
-                }
-            }
-            */
-        }
-
         private void txtCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (txtCategoria.Text)
             {
                 case "REFEIÇÕES":
-
                     txtSubcategoria.Items.Clear();
                     txtSubcategoria.Items.Add("ARROZ");
                     txtSubcategoria.Items.Add("PRATOS QUENTES");
@@ -499,7 +406,6 @@ namespace ProjetoCSGrupo
                     break;
 
                 case "ENTRADAS":
-
                     txtSubcategoria.Items.Clear();
                     txtSubcategoria.Items.Add("ATUM");
                     txtSubcategoria.Items.Add("OVOS");
@@ -509,7 +415,6 @@ namespace ProjetoCSGrupo
                     break;
 
                 case "BEBIDAS":
-
                     txtSubcategoria.Items.Clear();
                     txtSubcategoria.Items.Add("ÁGUA");
                     txtSubcategoria.Items.Add("SUCOS");
@@ -521,7 +426,6 @@ namespace ProjetoCSGrupo
                     break;
 
                 case "ACOMPANHAMENTOS":
-
                     txtSubcategoria.Items.Clear();
                     txtSubcategoria.Items.Add("MOLHOS");
                     txtSubcategoria.Items.Add("SAKÊS");
@@ -538,24 +442,12 @@ namespace ProjetoCSGrupo
                     break;
             }
         }
-
-        private void txtCategoria_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dgvEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvEstoque_SelectionChanged_1(object sender, EventArgs e)
         {
             int contlinhas = dgvEstoque.SelectedRows.Count;
             if (contlinhas > 0)
             {
                 MySqlConnection conexao = new MySqlConnection("server=localhost; port=3306; uid=root; password=; database=bdjapapito2");
-
                 try
                 {
                     conexao.Open();
@@ -596,13 +488,13 @@ namespace ProjetoCSGrupo
                         txtTipo.Enabled = false;
                         txtVenda.Enabled = false;
                         txtDescricao.Enabled = false;
-                        
+
                     }
-                    
+
                 }
-                catch 
+                catch
                 {
-                    this.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
+                    frmAlerta.Alerta("Não foi possível encontrar.", frmAlerta.enmType.Error);
 
                 }
                 finally
@@ -611,62 +503,39 @@ namespace ProjetoCSGrupo
                 }
             }
         }
-
         private void txtCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
-                this.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
+                frmAlerta.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
             }
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
-                this.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
+                frmAlerta.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
             }
         }
-
         private void txtVenda_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
-                this.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
+                frmAlerta.Alerta("Apenas números e virgulas", frmAlerta.enmType.Virgula);
             }
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
-                this.Alerta("O campo só aceita uma virgula", frmAlerta.enmType.Virgula);
+                frmAlerta.Alerta("O campo só aceita uma virgula", frmAlerta.enmType.Virgula);
             }
         }
-
         private void txtEstoque_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                this.Alerta("Apenas números", frmAlerta.enmType.Virgula);
+                frmAlerta.Alerta("Apenas números", frmAlerta.enmType.Virgula);
             }
-        }
-
-        private void txtCusto_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void txtVenda_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void txtVenda_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void txtCusto_MouseDown(object sender, MouseEventArgs e)
-        {
-            
         }
     }
 }

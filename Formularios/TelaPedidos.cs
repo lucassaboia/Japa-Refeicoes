@@ -17,8 +17,6 @@ namespace ProjetoCSGrupo
         {
             InitializeComponent();
         }
-
-
         private void TelaPedidos_Load(object sender, EventArgs e)
         {
             txtQuantidadeProduto.Enabled = false;
@@ -31,7 +29,6 @@ namespace ProjetoCSGrupo
             txtNomeProduto.DisplayMember = "descricao";
             txtNomeProduto.ValueMember = "codigo";
             txtNomeProduto.ResetText();
-
         }
         public void Alerta(string msg, frmAlerta.enmType type)
         {
@@ -39,7 +36,6 @@ namespace ProjetoCSGrupo
             frm.showAlert(msg, type);
 
         }
-
         private void btnNovo_Click(object sender, EventArgs e)
         {
             TotalVenda = 0;
@@ -64,11 +60,6 @@ namespace ProjetoCSGrupo
                 txtTotalProduto.Text = "R$ 0,00";
             }
         }
-        private void txtQuantidadeProduto_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void txtQuantidadeProduto_TextChanged_1(object sender, EventArgs e)
         {
             if (txtQuantidadeProduto.Text == "")
@@ -85,7 +76,6 @@ namespace ProjetoCSGrupo
                 txtTotalProduto.Text = TotalProduto.ToString("C");
             }
         }
-
         private void txtQuantidadeProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -94,7 +84,6 @@ namespace ProjetoCSGrupo
                 this.Alerta("Apenas números", frmAlerta.enmType.Virgula);
             }
         }
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if ((txtNomeProduto.Text != "") && (txtQuantidadeProduto.Text != ""))
@@ -110,11 +99,9 @@ namespace ProjetoCSGrupo
                 txtQuantidadeProduto.ResetText();
                 txtValorProduto.Text = "R$ 0,00";
                 txtTotalProduto.Text = "R$ 0,00";
-
                 txtQuantidadeProduto.Enabled = false;
             }
         }
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
             try
@@ -130,10 +117,9 @@ namespace ProjetoCSGrupo
                 this.Alerta("Não há nada para apagar.", frmAlerta.enmType.Error);
             }
         }
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtNomeCliente.Text == "")         
+            if (txtNomeCliente.Text == "")
             {
                 this.Alerta("Preencha todos os campos", frmAlerta.enmType.Campos);
             }
@@ -141,9 +127,8 @@ namespace ProjetoCSGrupo
             {
                 this.Alerta("Não há itens no pedido", frmAlerta.enmType.Info);
             }
-
-            else if (MessageBox.Show("Deseja realmente salvar o produto?", "Japapito Refeições", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)         
-                {
+            else if (MessageBox.Show("Deseja realmente salvar o produto?", "Japapito Refeições", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
                 string id_cliente = txtNomeCliente.Text;
                 string data_venda = txtDataVenda.Text;
                 string status_venda = txtStatusVenda.Text;
@@ -152,9 +137,8 @@ namespace ProjetoCSGrupo
 
                 Banco.dmlVenda(sqlVenda);
                 this.Alerta("Pedido realizado.", frmAlerta.enmType.Success);
-
-
                 int ultimo_produto = dgvItensVenda.RowCount;
+
                 for (int i = 0; i < ultimo_produto; i++)
                 {
                     string id_venda = Properties.Settings.Default.idVenda;
@@ -188,7 +172,6 @@ namespace ProjetoCSGrupo
             txtQuantidadeProduto.Enabled = false;
             this.Alerta("Produtos atualizados com sucesso.", frmAlerta.enmType.Success);
         }
-
         private void txtNomeCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtNomeProduto.Enabled = true;

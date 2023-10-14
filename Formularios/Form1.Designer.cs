@@ -245,7 +245,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(966, 15);
             this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
@@ -293,7 +292,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(800, 126);
             this.panel5.TabIndex = 5;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // lblUsuario
             // 
@@ -389,7 +387,6 @@
             this.telaPedidos1.Name = "telaPedidos1";
             this.telaPedidos1.Size = new System.Drawing.Size(791, 481);
             this.telaPedidos1.TabIndex = 3;
-            this.telaPedidos1.Load += new System.EventHandler(this.telaPedidos1_Load);
             // 
             // Form1
             // 
